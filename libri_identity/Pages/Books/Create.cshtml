@@ -1,0 +1,86 @@
+﻿@page
+@model libri_identity.Pages.Books.CreateModel
+
+@{
+    ViewData["Title"] = "Create - Book";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<style>
+    ::-webkit-input-placeholder {
+        font-style: italic;
+    }
+
+    :-moz-placeholder {
+        font-style: italic;
+    }
+
+    ::-moz-placeholder {
+        font-style: italic;
+    }
+
+    :-ms-input-placeholder {
+        font-style: italic;
+    }
+</style>
+
+<h1 style="color: lawngreen;">Add a used book</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Book.Name" class="control-label"></label>
+                <input asp-for="Book.Name" class="form-control" placeholder="Title of the book" />
+                <span asp-validation-for="Book.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.Author" class="control-label"></label>
+                <input asp-for="Book.Author" class="form-control" placeholder="Name of the author" />
+                <span asp-validation-for="Book.Author" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.Subject" class="control-label"></label>
+                <input asp-for="Book.Subject" class="form-control" placeholder="Subject of the book. Es: Maths" />
+                <span asp-validation-for="Book.Subject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.Course" class="control-label"></label>
+                <input asp-for="Book.Course" class="form-control" placeholder="Course of the book. Es: ICT" />
+                <span asp-validation-for="Book.Course" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.Class" class="control-label"></label>
+                <input asp-for="Book.Class" class="form-control" placeholder="Grade of the book. Es: Third" />
+                <span asp-validation-for="Book.Class" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.Year" class="control-label"></label>
+                <input asp-for="Book.Year" class="form-control" placeholder="Year of publication (yyyy)" />
+                <span asp-validation-for="Book.Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.Publisher" class="control-label"></label>
+                <input asp-for="Book.Publisher" class="form-control" placeholder="Name of the publisher" />
+                <span asp-validation-for="Book.Publisher" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.Isbn" class="control-label"></label>
+                <input asp-for="Book.Isbn" class="form-control" placeholder="ISBN of the book" />
+                <span asp-validation-for="Book.Isbn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="text-center">
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

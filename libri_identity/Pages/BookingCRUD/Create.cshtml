@@ -1,0 +1,29 @@
+﻿@page
+@model libri_identity.Pages.BookingCRUD.CreateModel
+
+@{
+    ViewData["Title"] = "Create - Booking";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1 style="color: lawngreen">Booking</h1>
+@if (Model.Book.State == 0)
+{
+    <h4>Confirm your booking</h4>
+    <hr />
+    <form method="post" class="text-center">
+        <input type="submit" value="OK" class="btn btn-primary" /> | 
+        <a asp-page="/Books/Index">Back to List</a>
+    </form>
+}
+else
+{
+    <div>
+        <h6>Already booked</h6>
+        <a asp-page="./Index">Back to List</a>
+    </div>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

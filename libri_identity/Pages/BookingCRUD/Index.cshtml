@@ -1,0 +1,71 @@
+﻿@page
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model libri_identity.Pages.BookingCRUD.IndexModel
+
+@{
+    ViewData["Title"] = "Read - Booking";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1 style="color: lawngreen;">Booking</h1>
+
+<div class="table-responsive">
+    <table class="table table-hover text-center">
+        <thead>
+            <tr>
+                <th>
+                    Start Booking
+                </th>
+                <th>
+                    End Booking
+                </th>
+                <th>
+                    Title
+                </th>
+
+                <th>
+                    ISBN
+                </th>
+
+                <th>
+                    Student
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Booking)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Start_Booking)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.End_Booking)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Isbn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student)
+                </td>
+                @if (SignInManager.IsSignedIn(User) && item.Student == User.Identity.Name)
+                {
+                    <td>
+                        <a asp-page="./Delete" asp-route-id_search="@item.Id_Booking" class="btn btn-danger"><i class='fa fa-remove'></i></a>
+                    </td>
+                }
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<p class="text-center">
+    <a asp-page="/Books/Index">Make a reservation</a>
+</p>

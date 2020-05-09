@@ -1,0 +1,83 @@
+﻿@page
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model libri_identity.Pages.Books.EditModel
+
+@{
+    ViewData["Title"] = "Edit - Book";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1 style="color: lawngreen;">Edit</h1>
+<hr />
+@if (SignInManager.IsSignedIn(User) && User.Identity.Name == Model.Book.Name_Student)
+{
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Book.Id" />
+                <div class="form-group">
+                    <label asp-for="Book.Name" class="control-label"></label>
+                    <input asp-for="Book.Name" class="form-control" />
+                    <span asp-validation-for="Book.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Book.Author" class="control-label"></label>
+                    <input asp-for="Book.Author" class="form-control" />
+                    <span asp-validation-for="Book.Author" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Book.Subject" class="control-label"></label>
+                    <input asp-for="Book.Subject" class="form-control" />
+                    <span asp-validation-for="Book.Subject" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Book.Course" class="control-label"></label>
+                    <input asp-for="Book.Course" class="form-control" />
+                    <span asp-validation-for="Book.Course" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Book.Class" class="control-label"></label>
+                    <input asp-for="Book.Class" class="form-control" />
+                    <span asp-validation-for="Book.Class" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Book.Year" class="control-label"></label>
+                    <input asp-for="Book.Year" class="form-control" />
+                    <span asp-validation-for="Book.Year" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Book.Publisher" class="control-label"></label>
+                    <input asp-for="Book.Publisher" class="form-control" />
+                    <span asp-validation-for="Book.Publisher" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Book.Isbn" class="control-label"></label>
+                    <input asp-for="Book.Isbn" class="form-control" />
+                    <span asp-validation-for="Book.Isbn" class="text-danger"></span>
+                </div>
+                <input type="hidden" asp-for="Book.State" />
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <a asp-page="./Index">Back to List</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+}
+else
+{
+    <div>
+        <h6>You can edit only your books</h6>
+        <a asp-page="./Index">Back to List</a>
+    </div>
+}
