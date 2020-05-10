@@ -4,7 +4,7 @@ An ASP.NET Core project that manages a database of used books and gives the oppo
 Everyone can *add*, *update* and *delete* only their **own books**.
 
 
-![](libri_identity/wwwroot/img/ScreenShots/1.PNG)
+![](libri_identity/wwwroot/img/ScreenShots/1.2.PNG)
 
 *The **Index** page of the **books** section.* 
 
