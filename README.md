@@ -34,3 +34,5 @@
 ![](libri_identity/wwwroot/img/ScreenShots/5.PNG)
 
 *The **Details** page of the books list.* 
+
+#### Developed during 2019/2020 at school.
