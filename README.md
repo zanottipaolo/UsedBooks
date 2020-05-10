@@ -27,7 +27,7 @@
 
 *The **Delete** page of the books list.*
  
-* **Edit** and **Delete** operations are allowed only if the book is not reserved.
+* **Delete** operation is allowed only if the book is not reserved.
 
 ---
 
