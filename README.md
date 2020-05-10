@@ -1,6 +1,6 @@
 # UsedBooks
-An ASP.NET Core project that manages a database of used books and gives the opportunity to make reservations.  
-It includes also Identity.
+#### An ASP.NET Core project that manages a database of used books and gives the opportunity to make reservations.  
+#### It includes also Identity.
 
 * Everyone can see the whole books and booking list. All users can *add*, *update* and *delete* only their **own books**.
 
