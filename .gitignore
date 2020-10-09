@@ -340,3 +340,4 @@ ASALocalRun/
 healthchecksdb
 libri_identity/app.db
 libri_identity/book_db.db
+libri_identity/book_db.db

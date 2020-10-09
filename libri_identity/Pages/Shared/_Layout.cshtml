@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -7,32 +11,67 @@
     <link rel="icon" href="~/Play_Books_30007.ico">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/navbarStyle.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Books/Index">Books</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/BookingCRUD/Index">Booking</a>
-                        </li>
+        <nav>
+            <ul id="main">
+                <li>
+                    <a class="text-dark font-weight-bold" asp-area="" asp-page="/Index">Home</a>
+                </li>
+                <li class="text-dark">Books
+                    <ul class="drop">
+                        <div>
+                            <li>
+                                <a class="text-dark" asp-area="" asp-page="/Books/Index">List</a>
+                            </li>
+                            <li>
+                                <a class="text-dark" asp-page="/Books/Create">Add</a>
+                            </li>
+                        </div>
                     </ul>
-                </div>
-            </div>
+                </li>
+                <li>
+                    <a class="text-dark" asp-area="" asp-page="/BookingCRUD/Index">Booking</a>
+                </li>
+                <li class="text-dark">
+                    Account
+                @if(SignInManager.IsSignedIn(User))
+                {
+                    <ul class="drop">
+                        <div>
+                            <li>
+                                <a class="text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage your account">Manage</a>
+                            </li>
+                            <li>
+                                <form id="logout-form" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                                    <a class="text-dark" onclick="document.getElementById('logout-form').submit();return false;">Logout</a>
+                                </form>
+                            </li>
+                        </div>
+                    </ul>
+                }else
+                {
+                    <ul class="drop">
+                        <div>
+                            <li>
+                                <a class="text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                            </li>
+                            <li>
+                                <a class="text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                            </li>
+                         </div>
+                    </ul>
+                }
+                </li>
+                <li class="text-dark">
+                    <a class="text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                </li>
+                <div id="marker"></div>
+            </ul>
         </nav>
     </header>
     <div class="container">
